@@ -1,0 +1,12 @@
+{
+	"name": "auto-labeller-function",
+	"version": "1.0.0",
+	"description": "Cloud Function for auto-labeller",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"@google-cloud/compute": "^3.9.1"
+	}
+}
