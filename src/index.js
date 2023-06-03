@@ -1,4 +1,5 @@
-const { labelComputeEngineInstance } = require('./gce');
+const { labelComputeEngineInstance } = require('./instnaces');
+const { labelSnapshots } = require('./snapshots');
 
 exports.labelResource = async (event, context) => {
 	const logData = JSON.parse(Buffer.from(event.data, 'base64').toString());
@@ -9,6 +10,11 @@ exports.labelResource = async (event, context) => {
 	) {
 		console.log('Labelling Compute Engine Instance...');
 		await labelComputeEngineInstance(logData);
+	} else if (
+		String(logData.protoPayload.methodName).includes('compute.snapshots.insert')
+	) {
+		console.log('Labelling Snapshot...');
+		await labelSnapshots(logData);
 	} else {
 		console.log(logData);
 	}

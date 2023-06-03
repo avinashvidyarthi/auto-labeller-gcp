@@ -11,13 +11,13 @@ variable "region" {
 variable "custom_role_permissions" {
   description = "Permissions for the auto-labeller-custom-role"
   type        = list(string)
-  default     = ["compute.instances.get", "compute.instances.setLabels"]
+  default     = ["compute.instances.get", "compute.instances.setLabels", "compute.snapshots.get", "compute.snapshots.setLabels"]
 }
 
 variable "log_filter" {
   type    = string
   default = <<EOF
     logName="projects/avinashvidyarthi/logs/cloudaudit.googleapis.com%2Factivity"
-protoPayload.methodName: "compute.instances.insert"
+protoPayload.methodName: ("compute.instances.insert" OR "compute.snapshots.insert")
     EOF
 }
