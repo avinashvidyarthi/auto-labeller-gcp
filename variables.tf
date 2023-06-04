@@ -17,7 +17,9 @@ variable "custom_role_permissions" {
     "compute.snapshots.get",
     "compute.snapshots.setLabels",
     "compute.disks.get",
-    "compute.disks.setLabels"
+    "compute.disks.setLabels",
+    "compute.images.get",
+    "compute.images.setLables"
   ]
 }
 
@@ -25,6 +27,6 @@ variable "log_filter" {
   type    = string
   default = <<EOF
     logName="projects/avinashvidyarthi/logs/cloudaudit.googleapis.com%2Factivity"
-protoPayload.methodName: ("compute.instances.insert" OR "compute.snapshots.insert" OR "compute.disks.insert")
+protoPayload.methodName: ("compute.instances.insert" OR "compute.snapshots.insert" OR "compute.disks.insert" OR "compute.images.insert")
     EOF
 }

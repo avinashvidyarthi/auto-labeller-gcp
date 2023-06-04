@@ -20,6 +20,12 @@ exports.labelResource = async (event, context) => {
 		const { labelDisk } = require('./disks');
 		console.log('Labelling Disk...');
 		await labelDisk(logData);
+	} else if (
+		String(logData.protoPayload.methodName).includes('compute.images.insert')
+	) {
+		const { labelImages } = require('./images');
+		console.log('Labelling Image...');
+		await labelImages(logData);
 	} else {
 		console.log(logData);
 	}
