@@ -19,7 +19,7 @@ variable "custom_role_permissions" {
     "compute.disks.get",
     "compute.disks.setLabels",
     "compute.images.get",
-    "compute.images.setLables"
+    "compute.images.setLabels"
   ]
 }
 
